@@ -12,20 +12,6 @@ class Spurwing {
     this.API_URL = 'https://api.spurwing.io/api/v2/';
   }
 
-  isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-  }
-
-  formUrlEncode(obj) {
-    if (!obj)
-      return '';
-    let urlData = '';
-    for (let x in obj)
-      urlData = urlData + x + '=' + encodeURIComponent(obj[x]) + '&';
-    urlData = urlData.substr(0, (urlData.length - 1));
-    return urlData;
-  }
-
   async get_appointment_types(provider_id, clients_can_book) {
     return await this.HTTP('GET', this.API_URL + 'appointment_types.json', { provider_id, clients_can_book })
   }
@@ -43,6 +29,20 @@ class Spurwing {
   }
   async delete_appointment(appointment_id, authorization) {
     return await this.HTTP('DELETE', this.API_URL + 'appointments/' + appointment_id, {}, { authorization: 'Bearer ' + authorization })
+  }
+
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
+
+  formUrlEncode(obj) {
+    if (!obj)
+      return '';
+    let urlData = '';
+    for (let x in obj)
+      urlData = urlData + x + '=' + encodeURIComponent(obj[x]) + '&';
+    urlData = urlData.substr(0, (urlData.length - 1));
+    return urlData;
   }
 
   async HTTP(method, url, data, headers) {

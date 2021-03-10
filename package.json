@@ -1,6 +1,6 @@
 {
   "name": "spurwing",
-  "version": "1.0.4",
+  "version": "1.0.4-patch",
   "description": "Spurwing API NodeJS Library",
   "main": "spurwing.js",
   "keywords": [
