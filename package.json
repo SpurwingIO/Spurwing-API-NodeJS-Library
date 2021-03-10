@@ -1,9 +1,15 @@
 {
   "name": "spurwing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Spurwing API NodeJS Library",
   "main": "spurwing.js",
-  "keywords": ["scheduling", "scheduler", "booking", "appointment", "calendar"],
+  "keywords": [
+    "scheduling",
+    "scheduler",
+    "booking",
+    "appointment",
+    "calendar"
+  ],
   "scripts": {
     "test": "node tests.js"
   },
