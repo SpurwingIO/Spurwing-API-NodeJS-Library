@@ -1,10 +1,11 @@
 {
-  "name": "spurwing-nodejs-library",
-  "version": "1.0.0",
+  "name": "spurwing",
+  "version": "1.0.1",
   "description": "Spurwing API NodeJS Library",
   "main": "spurwing.js",
+  "keywords": ["scheduling", "scheduler", "booking", "appointment", "calendar"],
   "scripts": {
-    "test": "node test.js"
+    "test": "node tests.js"
   },
   "author": "Ilya Nevolin",
   "license": "MIT",
