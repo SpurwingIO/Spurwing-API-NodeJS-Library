@@ -9,8 +9,6 @@ const axios = require('axios');
 
 class Spurwing {
   constructor(provider_id, api_key) {
-    this.PID = provider_id;
-    this.KEY = api_key;
     this.API_URL = 'https://api.spurwing.io/api/v2/';
   }
 
