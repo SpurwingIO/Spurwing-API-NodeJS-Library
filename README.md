@@ -49,6 +49,6 @@ Spurwing's REST API Reference and Docs: https://docs.spurwing.io/
 To run our predefined unit tests use the `tests.js` script. You also need to rename the `config.sample.js` file to `config.js` and enter your credentials (provider id and api key). Afterwards you can run the `npm tests` command.
 
 ## Support
-- For public bugs & issues and bugs please use the GitHub Issues Page.
+- For public issues and bugs please use the GitHub Issues Page.
 - For enquiries and private issues reach out to us at support@spurwing.io
 - Join our Discord Community Server: https://discord.gg/j3gd5Qk5uW
