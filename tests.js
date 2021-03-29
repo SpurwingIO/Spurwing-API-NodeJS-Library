@@ -28,7 +28,8 @@ async function runner(testname, func) {
     console.log('\n'+testname, 'PASSED\n')
   } catch (err) {
     console.error(testname, 'FAILED')
-    console.error(err)
+    // console.error(err)
+    throw err;
   }
 }
 
