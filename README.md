@@ -46,7 +46,15 @@ For additional demos and use cases have a look under `tests.js`.
 Spurwing's REST API Reference and Docs: https://docs.spurwing.io/
 
 ## Testing
-To run our predefined unit tests use the `tests.js` script. You also need to rename the `config.sample.js` file to `config.js` and enter your credentials (provider id and api key). Afterwards you can run the `npm tests` command.
+To run our predefined unit tests use the `tests.js` script.
+
+You also need to provide the API credentials. You can use environment variables, or rename the `config.sample.js` file to `config.js` and enter your credentials (provider id and api key). Afterwards you can run the `npm tests` command.
+
+Environment variables:
+```
+SPURWING_PID=change_me
+SPURWING_KEY=change_me
+```
 
 ## Support
 - For public issues and bugs please use the GitHub Issues Page.
