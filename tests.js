@@ -8,10 +8,16 @@ const chai = require('chai');
 chai.should();
 const expect = chai.expect;
 
-
-const CONFIG = require('./config.js')
-const PID = CONFIG.provider_id;
-const KEY = CONFIG.api_key;
+let PID, KEY;
+if (process.env.SPURWING_PID && process.env.SPURWING_KEY) {
+  PID = process.env.SPURWING_PID;
+  KEY = process.env.SPURWING_KEY;
+} else {
+  let CONFIG = require('./config.js');
+  PID = CONFIG.provider_id;
+  KEY = CONFIG.api_key;
+}
+if (!PID || !KEY) throw 'missing PID and/or KEY values';
 
 const Spurwing = require('./spurwing.js')
 
