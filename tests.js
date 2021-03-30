@@ -29,7 +29,7 @@ async function runner(testname, func) {
   } catch (err) {
     console.error(testname, 'FAILED')
     console.error(err)
-    throw err;
+    process.exit(1); // Exit the proccess if failed
   }
 }
 
