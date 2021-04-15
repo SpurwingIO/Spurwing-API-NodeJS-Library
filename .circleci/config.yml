@@ -1,47 +1,54 @@
 version: 2
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node:8.9.1
-
 jobs:
-  build:
-    <<: *defaults  
+  install-deps:
+    docker:
+      - image: circleci/node:latest
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-
-      - run: npm install
       - run:
-          name: Setup Environment Variables
-          command: |
-            export SPURWING_PID=${SPURWING_PID} SPURWING_KEY=${SPURWING_KEY} 
-      - run:
-          name: Run tests
-          command: npm test
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+          name: npm install
+          working_directory: ./
+          command: npm install
       - persist_to_workspace:
-          root: ~/repo
-          paths: .
+          root: .
+          paths:
+            - ./node_modules
+
+  testing:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run  Tests
+          working_directory: ./
+          command: |
+            npm run test
+
+  scan-package:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Check package against security vulnerabilities
+          working_directory: ./
+          command: npm audit --audit-level=critical
 
   deploy:
-    <<: *defaults
+    docker:
+      - image: circleci/node:latest 
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: .
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
       - run:
           name: Publish package
           command: npm publish
@@ -49,17 +56,21 @@ jobs:
 
 workflows:
   version: 2
-  test-deploy:
+  default-pipeline:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /^v.*/
-      - deploy:
+      - install-deps
+      - testing:
           requires:
-            - build
+            - "install-deps"
+      - scan-package:
+          requires:
+            - "install-deps"
+      - deploy:
+          requires: ["testing", "scan-package"]
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only:
+                - master      
+
+
+

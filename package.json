@@ -5,8 +5,8 @@
   "main": "spurwing.js",
   "homepage": "https://github.com/Spurwing/Spurwing-API-NodeJS-Library",
   "bugs": {
-    "url" : "https://github.com/Spurwing/Spurwing-API-NodeJS-Library/issues",
-    "email" : "ilya@spurwing.io"
+    "url": "https://github.com/Spurwing/Spurwing-API-NodeJS-Library/issues",
+    "email": "ilya@spurwing.io"
   },
   "repository": {
     "type": "git",
