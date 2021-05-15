@@ -24,6 +24,9 @@ class Spurwing {
   async complete_booking(provider_id, appointment_type_id, email, first_name, last_name, date, contact_type, appointment_id, appointment_location_id, timezone, video_chat_url) {
     return await this.HTTP('POST', this.API_URL + 'bookings/complete_booking.json', { provider_id, appointment_type_id, email, first_name, last_name, date, contact_type, appointment_id, appointment_location_id, timezone, video_chat_url })
   }
+  async create_group_appointment(authorization, provider_id, appointment_type_id, datetime) {
+    return await this.HTTP('POST', this.API_URL + 'appointments', { provider_id, appointment_type_id, datetime }, { authorization: 'Bearer ' + authorization })
+  }
   async list_appointments(authorization, page_size, offset, appointment_category, load_attendees, load_providers, load_appointment_type) {
     return await this.HTTP('GET', this.API_URL + 'appointments', { page_size, offset, appointment_category, load_attendees, load_providers, load_appointment_type }, { authorization: 'Bearer ' + authorization })
   }
