@@ -40,20 +40,6 @@ jobs:
           working_directory: ./
           command: npm audit --audit-level=critical
 
-  deploy:
-    docker:
-      - image: circleci/node:latest 
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ./.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
-
-
 workflows:
   version: 2
   default-pipeline:
