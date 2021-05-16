@@ -51,12 +51,5 @@ workflows:
       - scan-package:
           requires:
             - "install-deps"
-      - deploy:
-          requires: ["testing", "scan-package"]
-          filters:
-            branches:
-              only:
-                - master      
-
 
 
