@@ -27,7 +27,7 @@ const KEY = 'your_api_key';
 
 let sp = new Spurwing();
 
-let allApps = await sp.list_appointments(KEY, 1000, 0, PID)
+let allApps = await sp.list_appointments(KEY, 1000, 0)
 
 ```
 ## Documentation
@@ -38,6 +38,7 @@ The currently implemented API functions and features are:
 - get_days_available
 - get_slots_available
 - complete_booking
+- create_group_appointment
 - list_appointments
 - delete_appointment
 
