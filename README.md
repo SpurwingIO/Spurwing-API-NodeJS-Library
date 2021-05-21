@@ -2,7 +2,7 @@
 
 Lightweight NodeJS library for Spurwing's API.
 
-Spurwing's API makes it easy to add robust scheduling and booking to your application. We power millions of appointment bookings for thousands of companies, from marketplaces to SaaS & healthcare. 
+Spurwing's API makes it easy to add robust scheduling and booking to your application. We power millions of appointment bookings for thousands of companies, from marketplaces to SaaS & healthcare. Learn more about the [Spurwing Scheduling API](https://github.com/Spurwing/Appointment-Scheduling-API).
 
 ![image](https://user-images.githubusercontent.com/9488406/119051709-cd5b3500-b9c3-11eb-8951-cc153b65f31e.png)
 
